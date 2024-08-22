@@ -1,0 +1,71 @@
+data_
+_chemical_name_mineral ?CsRHO_dry?
+_cell_length_a  14.59726(15)
+_cell_length_b  14.59726(15)
+_cell_length_c  14.59726(15)
+_cell_angle_alpha 90
+_cell_angle_beta  90
+_cell_angle_gamma 90
+_cell_volume 3110.383(97)
+_symmetry_space_group_name_H-M I-43m
+loop_
+_symmetry_equiv_pos_as_xyz
+	'-x, -y, z'
+	'-x, -z, y'
+	'-x, z, -y'
+	'-x, y, -z'
+	'-x+1/2, -y+1/2, z+1/2'
+	'-x+1/2, -z+1/2, y+1/2'
+	'-x+1/2, z+1/2, -y+1/2'
+	'-x+1/2, y+1/2, -z+1/2'
+	'-y, -x, z'
+	'-y, -z, x'
+	'-y, z, -x'
+	'-y, x, -z'
+	'-y+1/2, -x+1/2, z+1/2'
+	'-y+1/2, -z+1/2, x+1/2'
+	'-y+1/2, z+1/2, -x+1/2'
+	'-y+1/2, x+1/2, -z+1/2'
+	'-z, -x, y'
+	'-z, -y, x'
+	'-z, y, -x'
+	'-z, x, -y'
+	'-z+1/2, -x+1/2, y+1/2'
+	'-z+1/2, -y+1/2, x+1/2'
+	'-z+1/2, y+1/2, -x+1/2'
+	'-z+1/2, x+1/2, -y+1/2'
+	'z, -x, -y'
+	'z, -y, -x'
+	'z, y, x'
+	'z, x, y'
+	'z+1/2, -x+1/2, -y+1/2'
+	'z+1/2, -y+1/2, -x+1/2'
+	'z+1/2, y+1/2, x+1/2'
+	'z+1/2, x+1/2, y+1/2'
+	'y, -x, -z'
+	'y, -z, -x'
+	'y, z, x'
+	'y, x, z'
+	'y+1/2, -x+1/2, -z+1/2'
+	'y+1/2, -z+1/2, -x+1/2'
+	'y+1/2, z+1/2, x+1/2'
+	'y+1/2, x+1/2, z+1/2'
+	'x, -y, -z'
+	'x, -z, -y'
+	'x, z, y'
+	'x, y, z'
+	'x+1/2, -y+1/2, -z+1/2'
+	'x+1/2, -z+1/2, -y+1/2'
+	'x+1/2, z+1/2, y+1/2'
+	'x+1/2, y+1/2, z+1/2'
+
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+P 0.5 0.5 0.5
+S 0.5 0.5 0
+Cl 0.5 0.5 0.15
+F 0.25 0.25 0.25
+He 0.36 0.5 0.36
