@@ -1,6 +1,4 @@
-# date: Oct 25, 2023
-# @author:Kun-Lin Wu
-
+# import libraries
 import sys, os
 from pathlib import Path
 import numpy as np
@@ -16,24 +14,19 @@ from md_helper import *
 from md_wet_csrho_functions import *
 
 
-
-# files
-data_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCsRHO_CO2_adsorption/data/02_im3m')
+# access data files from the data folder 
+data_folder = Path('./data/csrho-im3m')
 # data file for wet Cs/RHO: The traj file is wet Cs/RHO (im3m, 6CO2, 15H2O).
 # The traj file is the result after a combination of 5 ensembles of different Al distributions.
-# all_filepath = [data_folder/'im3m_cs10_6co2_15h2o_250.traj',
-#                 data_folder/'im3m_cs10_15h2o.traj',]
-all_filepath = [data_folder/'im3m_cs10_6co2.traj']
+all_filepath = [data_folder/'6co2_15h2o.traj',
+                data_folder/'15h2o.traj',]
+# all_filepath = [data_folder/'6co2.traj']
 
-# data_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/data/dft_refinement/00_cs/07_d8r_cs')
-# data file for wet Cs/RHO: The traj file is wet Cs/RHO (im3m, 6CO2, 15H2O).
-# The traj file is the result after a combination of 5 ensembles of different Al distributions.
-# all_filepath = [data_folder/'01_1h2o/opt_400/vasprun.xml']
 
 # source file: file for identifying potential cation positions in RHO, including d8r, s8r, s4r, center...
-source_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/src')
+source_folder = Path('./src')
 # for wet analysis
-file_cation = source_folder/'cation_positions_wet_new.cif'
+file_cation = source_folder/'cation_positions_wet.cif'
 
 # save result
 result_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCsRHO_CO2_adsorption/results/paper_csrho')
@@ -44,8 +37,8 @@ result_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCs
 # co2 only and h2o only
 
 #input settings
-# dict_keys = ['$6CO_{2}+15H_{2}O$', '$15H_{2}O$', '$6CO_{2}$']  #the name can be changed
-dict_keys = ['$6CO_{2}$']
+dict_keys = ['$6CO_{2}+15H_{2}O$', '$15H_{2}O$']  #the name can be changed
+# dict_keys = ['$6CO_{2}$']
 ele1 = 'Cs_{d8r}'
 dict_dist = {key: [] for key in dict_keys}
 
@@ -75,7 +68,7 @@ for i_file, filepath in enumerate(all_filepath):
 print(dict_dist)
 
 # -plot
-plt.figure(figsize=(6, 2))
+plt.figure(figsize=(6, 4))
 
 for i_case in range(len(all_filepath)):
     plt.subplot(len(all_filepath), 1, i_case+1)
@@ -89,8 +82,18 @@ for i_case in range(len(all_filepath)):
 plt.xlabel('$d(%s-%s)$, ${\AA}$' % ('Cs_{D8R}', 'D8R'))
 # plt.suptitle('$(Cs_{D8R}-D8R_{center})$ axial displacement in Cs-RHO (im3m)')
 plt.tight_layout()
-plt.savefig(result_folder/'cs_d8r_axial_displacement_wet(im3m)_6CO2.pdf')
+# plt.savefig(result_folder/'cs_d8r_axial_displacement_wet(im3m)_6CO2.pdf')
 plt.show()
+
+
+
+
+
+
+
+
+
+
 
 
 

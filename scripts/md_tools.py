@@ -2,13 +2,14 @@
 # @author:Kun-Lin Wu
 
 import sys, os
-sys.path.insert(0,'/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/src')
+sys.path.insert(0,'./src')
 from md_utils import *
 from ase import io
 # import matplotlib
 # matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
+sys.path.insert(0,'/src')
 from md_helper import get_indices, dict_to_atoms
 from ase import neighborlist
 
