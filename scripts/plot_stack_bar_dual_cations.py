@@ -330,28 +330,25 @@ def plot_pie_all_num_types_cs(dict_all_result):
 
 
 
-# files
 
-# data file for wet Cs/RHO: The traj file is wet Cs/RHO (im3m, 6CO2, 15H2O).
-# The traj file is the result after a combination of 5 ensembles of different Al distributions.
-data_folder = Path('./data/csrho-im3m')
-filepath = data_folder/'6co2_15h2o.traj'
 
-# data file for dry Cs/RHO: The traj file is dry Cs/RHO (i43m, 2CO2).
-# The traj file is the result after a combination of 5 ensembles of different Al distributions.
-# data_folder = Path('./data/csrho-i43m')
-# filepath = data_folder/'2co2.traj'
+# Settings for wet and dry cases
+case = 'dry'  # Change to 'wet' for wet case
 
-# source file: file for identifying potential cation positions in RHO, including d8r, s8r, s4r, center...
-source_folder = Path('./src')
-# for wet analysis
-file_cation = source_folder/'cation_positions_wet.cif'
-# for dry analysis
-# file_cation = source_folder/'cation_positions_dry.cif'
-
-# save result
-result_folder = Path('./results')
-
+if case == 'wet':
+    data_folder = Path('./data/csrho-im3m')
+    filepath = data_folder / '6co2_15h2o.traj'
+    source_folder = Path('./src')
+    file_cation = source_folder / 'cation_positions_wet.cif'
+    result_file = Path('./results/stackbar_co2_cs_wet_thres3.7.pdf')
+    
+elif case == 'dry':
+    data_folder = Path('./data/csrho-i43m')
+    filepath = data_folder / '2co2.traj'
+    source_folder = Path('./src')
+    file_cation = source_folder / 'cation_positions_dry.cif'
+    result_file = Path('./results/stackbar_co2_cs_dry_thres3.7.pdf')
+    
 
 # input settings
 ele1 = 'C_{CO2}'   # edit: the element
@@ -403,29 +400,29 @@ species = (
     "3 $Cs^{+}$"
 )
 
-# wet
-weight_counts = {
-    "Below": np.array([dict_all_result['num_cs_0'],
-                       dict_all_result['num_cs_1_d8r'],
-                       dict_all_result['num_cs_1_d8r_1_s6r'],
-                       dict_all_result['num_cs_1_d8r_2_s6r']]),
-    "Above": np.array([0,
-                       dict_all_result['num_cs_1_s6r'],
-                       dict_all_result['num_cs_2_s6r'],
-                       dict_all_result['num_cs_2_d8r_1_s6r']]),
-}
+if case == 'wet':
+    weight_counts = {
+        "Below": np.array([dict_all_result['num_cs_0'],
+                        dict_all_result['num_cs_1_d8r'],
+                        dict_all_result['num_cs_1_d8r_1_s6r'],
+                        dict_all_result['num_cs_1_d8r_2_s6r']]),
+        "Above": np.array([0,
+                        dict_all_result['num_cs_1_s6r'],
+                        dict_all_result['num_cs_2_s6r'],
+                        dict_all_result['num_cs_2_d8r_1_s6r']]),
+    }
 
-# # dry
-# weight_counts = {
-#     "Below": np.array([dict_all_result['num_cs_0'],
-#                        dict_all_result['num_cs_1_d8r'],
-#                        dict_all_result['num_cs_1_d8r_1_s6r'],
-#                        dict_all_result['num_cs_1_d8r_2_s6r']]),
-#     "Above": np.array([0,
-#                        dict_all_result['num_cs_1_s6r'],
-#                        dict_all_result['num_cs_2_s6r'],
-#                        dict_all_result['num_cs_2_d8r_1_s6r']]),
-# }
+elif case == 'dry':
+    weight_counts = {
+        "Below": np.array([dict_all_result['num_cs_0'],
+                        dict_all_result['num_cs_1_d8r'],
+                        dict_all_result['num_cs_1_d8r_1_s6r'],
+                        dict_all_result['num_cs_1_d8r_2_s6r']]),
+        "Above": np.array([0,
+                        dict_all_result['num_cs_1_s6r'],
+                        dict_all_result['num_cs_2_s6r'],
+                        dict_all_result['num_cs_2_d8r_1_s6r']]),
+    }
 
 width = 0.7
 
@@ -442,9 +439,8 @@ plt.yticks(fontsize=12)
 plt.ylim(ymax=850)
 plt.xlabel('Numbers of interacting $Cs^{+}$', size=12)
 plt.ylabel('Numbers of $CO_{2}-Cs^{+}$', size=12)
-plt.title('Cs-RHO(Im3m), '+ '$6CO_{2} + 15H_{2}O$', size=14) 
 plt.tight_layout()
-plt.savefig(result_folder/'stackbar_co2_cs_wet_thres3.7.pdf')
+plt.savefig(result_file)
 plt.show()
 
 
