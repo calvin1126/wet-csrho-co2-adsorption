@@ -1,6 +1,3 @@
-# date: Mon May 16, 2022
-# @author:Kun-Lin Wu
-
 import sys, os
 from pathlib import Path
 import glob
@@ -22,8 +19,8 @@ def make_gif(frame_folder):
 
 # all_filepath = ['/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/data/dft_refinement/00_cs/03_cs10_15h2o/00_6co2_15h2o/00_fullopt/vasprun.xml',]
 all_filepath = ['/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/data/dft_refinement/00_cs/03_cs10_15h2o/02_no_water/00_fullopt/vasprun.xml']
-source_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/src')
-file_cation = source_folder/'cation_positions_wet_new.cif'
+source_folder = Path('./src')
+file_cation = source_folder/'cation_positions_wet.cif'
 
 #--show the zeolite framework change using gif
 for i, filepath in enumerate(all_filepath):
