@@ -75,5 +75,5 @@ for i, label in enumerate(case_labels):
 
 plt.xlabel(f'$d({element_label}-D8R)$,' + ' ${\AA}$')
 plt.tight_layout()
-plt.savefig(result_folder/'cs_d8r_axial_displacement_i43m.pdf')
+# plt.savefig(result_folder/'cs_d8r_axial_displacement_i43m.pdf')
 plt.show()
