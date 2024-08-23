@@ -1,6 +1,3 @@
-# date: Mon May 8, 2023
-# @author:Kun-Lin Wu
-
 # import libraries
 import sys, os
 from pathlib import Path
@@ -20,27 +17,27 @@ from md_helper import get_indices, dict_to_atoms
 # GOAL:
 
 # files
-data_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCsRHO_CO2_adsorption/data/02_im3m')
-all_filepath = [data_folder/'im3m_cs10_6co2_15h2o_250.traj']
+# data_folder = Path('./data/csrho-im3m')
+# all_filepath = [data_folder/'6co2_15h2o.traj']
 
 # data file for dry Cs/RHO: The traj file is dry Cs/RHO (i43m, 2CO2).
 # The traj file is the result after a combination of 5 ensembles of different Al distributions.
-# data_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCsRHO_CO2_adsorption/data/01_i43m')
-# all_filepath = [data_folder/'i43m_cs10_2co2_250.traj']
+data_folder = Path('./data/csrho-i43m')
+all_filepath = [data_folder/'2co2.traj']
 
 
 # source file: file for identifying potential cation positions in RHO, including d8r, s8r, s4r, center...
-source_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/src')
-file_cation = source_folder/'cation_positions_wet_new.cif'
-# file_cation = source_folder/'cation_positions_dry_new.cif'
+source_folder = Path('./src')
+# file_cation = source_folder/'cation_positions_wet.cif'
+file_cation = source_folder/'cation_positions_dry.cif'
 
 # save result
-result_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCsRHO_CO2_adsorption/results/new_0214')
+result_folder = Path('./results')
 
 
 # input settings
-dict_keys = ['$6CO_{2}+15H_{2}O$']#, '$6CO_{2}$']  #the name can be changed
-# dict_keys = ['$2CO_{2}$']#, '$2CO_{2}$']
+# dict_keys = ['$6CO_{2}+15H_{2}O$']
+dict_keys = ['$2CO_{2}$']
 dict_dist = {key: [] for key in dict_keys}
 ele1 = 'C_{CO2}'    # edit: the element
 ele2 = 'Cs_{d8r}'   # edit: the element  # Cs_{d8r} is referring to Cs cations at S8R site.
@@ -84,7 +81,7 @@ plt.figure(figsize=(6, 2))
 for i_case in range(len(all_filepath)):
     plt.subplot(len(all_filepath), 1, i_case+1)
     data = np.concatenate(dict_dist[dict_keys[i_case]])
-    plt.hist(data, bins=50, density=1, alpha=0.5, label=dict_keys[i_case], color='blue')
+    plt.hist(data, bins=50, density=1, alpha=0.5, label=dict_keys[i_case], color='orange')
     plt.legend()
     plt.axvspan(xmin=2.00, xmax=3.60, color='green', alpha=0.2)
     # plt.xlim(xmin=2.00, xmax=7.50)
@@ -99,7 +96,7 @@ for i_case in range(len(all_filepath)):
 plt.xlabel('$d(O_{CO2}-Cs_{S8R})$, ${\AA}$', size=14)
 
 plt.tight_layout()
-plt.savefig(result_folder/'interacting_CO2_Cs_wet_3.6.png')
+plt.savefig(result_folder/'hist_co2_cs_dry.pdf')
 plt.show()
 
 
