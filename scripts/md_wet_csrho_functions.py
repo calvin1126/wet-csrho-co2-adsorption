@@ -1,6 +1,4 @@
-# date: Oct 24, 2023
-# @author:Kun-Lin Wu
-
+# Import required libraries
 import sys, os
 from md_utils import *
 from md_tools import *
