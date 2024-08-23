@@ -14,12 +14,11 @@ from md_utils import *
 from md_tools import *
 from md_helper import get_indices, dict_to_atoms
 
-# !!!! check with dry data
 
 def identify_cations_interacting_co2(i_ele, ele2, atoms):
     '''
     Identify which Cs cations are interacting with CO2 based on the O-Cs distance. In this case, the threshold for the
-    distance is 4.0 angstrom.
+    distance is 3.7 angstrom.
 
     Parameters:
     i_ele: the indices of ele1.
@@ -178,29 +177,20 @@ def classify_interacting_cs(traj, i_ele, ele2, all=False):
 
 
 
+# Settings for wet and dry cases
+case = 'wet'  # Change to 'wet' for wet case
 
-# files
-
-# data file for wet Cs/RHO: The traj file is wet Cs/RHO (im3m, 6CO2, 15H2O).
-# The traj file is the result after a combination of 5 ensembles of different Al distributions.
-# data_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCsRHO_CO2_adsorption/data/02_im3m')
-# filepath = data_folder/'im3m_cs10_6co2_15h2o_250.traj'
-
-# data file for dry Cs/RHO: The traj file is dry Cs/RHO (i43m, 2CO2).
-# The traj file is the result after a combination of 5 ensembles of different Al distributions.
-# data_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCsRHO_CO2_adsorption/data/01_i43m')
-data_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/data/dft_refinement/00_cs/03_cs10_15h2o/00_6co2_15h2o/02_pos/')
-filepath = data_folder/'combined_four_md_every_100.traj'
-
-# source file: file for identifying potential cation positions in RHO, including d8r, s8r, s4r, center...
-source_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_CO2/src')
-# for wet analysis
-file_cation = source_folder/'cation_positions_wet_new.cif'
-# for dry analysis
-# file_cation = source_folder/'cation_positions_dry_new.cif'
-
-# save result
-# result_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCsRHO_CO2_adsorption/results/new_0214')
+if case == 'wet':
+    data_folder = Path('./data/csrho-im3m')
+    filepath = data_folder / 'long_md_6co2_15h2o.traj'
+    source_folder = Path('./src')
+    file_cation = source_folder / 'cation_positions_wet.cif'
+    
+elif case == 'dry':
+    data_folder = Path('./data/csrho-i43m')
+    filepath = data_folder / 'long_md_2co2.traj'
+    source_folder = Path('./src')
+    file_cation = source_folder / 'cation_positions_dry.cif'
 
 
 # input settings
