@@ -16,8 +16,7 @@ from md_wet_csrho_functions import *
 
 # access data files from the data folder 
 data_folder = Path('./data/csrho-im3m')
-# data file for wet Cs/RHO: The traj file is wet Cs/RHO (im3m, 6CO2, 15H2O).
-# The traj file is the result after a combination of 5 ensembles of different Al distributions.
+
 all_filepath = [data_folder/'6co2_15h2o.traj',
                 data_folder/'15h2o.traj',]
 # all_filepath = [data_folder/'6co2.traj']
@@ -33,8 +32,7 @@ result_folder = Path('/Users/calvin11/Library/CloudStorage/Box-Box/project_WetCs
 
 
 
-#--get the cs-d8r center distance (only axial) histogram of wet csrho in comparison of three cases: co2+h2o,
-# co2 only and h2o only
+# get the cs-d8r center distance (only axial direction) histogram of wet csrho
 
 #input settings
 dict_keys = ['$6CO_{2}+15H_{2}O$', '$15H_{2}O$']  #the name can be changed
